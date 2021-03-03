@@ -93,6 +93,84 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/v1/chart/split/:period",
+    "title": "분리된 과거 데이터 요청",
+    "version": "1.0.0",
+    "name": "getSplitData",
+    "group": "chart",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -i http://localhost/v1/chart/split/0",
+        "type": "curl"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "period",
+            "description": "<p>요청할 기간[0:한달, 1:1년, 2:2년]</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "success",
+            "description": "<p>처리 성공 여부</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "status",
+            "description": "<p>응답 상태 코드</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": "<p>데이터</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number[]",
+            "optional": false,
+            "field": "data.humi",
+            "description": "<p>[0]:측정된 시간, [1]:습도</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number[]",
+            "optional": false,
+            "field": "data.temp",
+            "description": "<p>[0]:측정된 시간, [1]:온도</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"success\": true,\n  \"status\": 200,\n  \"data\": {\n    \"humi\": [\n      [\n        1612144800942,\n        23\n      ]\n    ],\n    \"temp\": [\n      [\n        1612144800942,\n        2\n      ]\n    ]\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/v1/chart/controller.js",
+    "groupTitle": "chart"
+  },
+  {
+    "type": "get",
     "url": "/v1/log",
     "title": "로그 데이터 요청",
     "version": "1.0.0",
