@@ -170,6 +170,70 @@ define({ "api": [
     "groupTitle": "chart"
   },
   {
+    "type": "delete",
+    "url": "/v1/log",
+    "title": "로그 데이터 삭제",
+    "version": "1.0.0",
+    "name": "deleteLog",
+    "group": "log",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "period",
+            "description": "<p>기간 (period일 전 로그 데이터 삭제)</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n  \"period\": 365\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "success",
+            "description": "<p>처리 성공 여부</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "status",
+            "description": "<p>응답 상태 코드</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": "<p>데이터</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"success\": true,\n  \"status\": 200,\n  \"data\": {\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/v1/log/controller.js",
+    "groupTitle": "log"
+  },
+  {
     "type": "get",
     "url": "/v1/log",
     "title": "로그 데이터 요청",
