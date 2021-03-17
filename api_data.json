@@ -325,15 +325,15 @@
             "group": "Parameter",
             "type": "Number",
             "optional": false,
-            "field": "max_humi",
-            "description": "<p>습도 설정 값</p>"
+            "field": "start",
+            "description": "<p>시작 타임스탬프</p>"
           },
           {
             "group": "Parameter",
             "type": "Number",
             "optional": false,
-            "field": "max_temp",
-            "description": "<p>온도 설정 값</p>"
+            "field": "end",
+            "description": "<p>끝 타임스탬프</p>"
           }
         ]
       },
